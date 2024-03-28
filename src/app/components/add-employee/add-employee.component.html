@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 1px solid   #ffffff ;
+            border-width: 0.5rem;
+            margin-top: 0.20rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            
+        }
+        .button {
+  background-color:  #6495ED; 
+  color: #000000; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  width: 100%;
+  /* Add more styles here as needed */
+
+
+}
+
+.button:hover {
+  background-color: #93C8FF; /* Darker coral color on hover */
+}
+.radio-item {
+  display: inline-block;
+  position: relative;
+  padding: 0 6px;
+  margin: 10px 0 0;
+}
+
+.radio-item input[type='radio'] {
+  display: none;
+}
+
+.radio-item label {
+  color: #666;
+  font-weight: normal;
+}
+
+.radio-item label:before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin-right: 5px; /* changed margin property to margin-right */
+  width: 20px;
+  height: 20px;
+  border-radius: 11px;
+  border: 2px solid #8457c7;
+  background-color: transparent;
+}
+
+.radio-item input[type=radio]:checked + label:after {
+  border-radius: 11px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  content: "";
+  display: block;
+  background: #8457c7;
+}
+
+input.ng-invalid.ng-touched{
+    border: red 1px solid;
+}
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<div class="card m-3">
+        <body>
+            <div class="container  col-sm-6">
+                <div  class="card-header" style="text-align: center;background-color:#6495ED ;">
+                    <h2>Add Employee</h2>
+                </div>
+                <div class="card-body">
+                <form class="row g-3" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+                    <div class="col-12">
+                        <label for="inputName" class="form-label">Name</label><br>
+                        <input type="text" class="form-control" id="inputName" placeholder="Enter Full Name" formControlName="name">
+                        <div>
+                            <span *ngIf="employeeForm.get('name').invalid && employeeForm.get('name').touched" 
+                            style="color: red;">Name is a required field</span>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress2" class="form-label">Email
+                            Address</label><br>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Enter Email Address" formControlName="email">
+                        <div>
+                            <span *ngIf="employeeForm.get('email').invalid && employeeForm.get('email').touched"
+                                style="color: red;">Valid email required</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="inputCity" class="form-label">Mobile
+                                Number</label><br>
+                            <input type="tel" class="form-control" id="inputCity" placeholder="Enter Mobile Number"
+                                pattern="0\d{10}" formControlName="mobileNumber">
+                                <div>
+                                    <span *ngIf="employeeForm.get('mobileNumber').invalid && employeeForm.get('mobileNumber').touched" 
+                                    style="color: red;">Mobile number is a required field</span>
+                                </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="inputZip" class="form-label">Birth
+                                Date</label><br>
+                            <input type="date" id="inputZip" class="form-control" formControlName="dob">
+                            <div>
+                                <span *ngIf="employeeForm.get('dob').invalid && employeeForm.get('dob').touched" 
+                                style="color: red;">Birth date is a required field</span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-12">
+                        <label for="Address" class="form-label">Address</label><br>
+                        <input type="text" class="form-control" id="Address" placeholder="Enter Address" formControlName="address">
+                        <div>
+                            <span *ngIf="employeeForm.get('address').invalid && employeeForm.get('address').touched" 
+                            style="color: red;">Address is a required field</span>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="button" [disabled]="employeeForm.get('email').invalid" ><b>Submit</b></button>
+                    </div>
+        
+                </form>
+                </div>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+                crossorigin="anonymous"></script>
+        </body>
+  </div>
+</html>

@@ -1,0 +1,33 @@
+<div class="card m-3">
+  <div class="card-header  text-center" style="background-color:  #93C8FF; color: #000000; ">
+    <h5 class="m-0">Employee Information</h5>
+</div>
+
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Address</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of employees">
+            <th scope="row">{{emp.id}}</th>
+            <td>{{emp.name}}</td>
+            <td>{{emp.email}}</td>
+            <td>{{emp.mobileNumber}}</td>
+            <td>{{emp.dob | date: 'dd/MM/yyyy'}}</td>
+            <td>{{emp.address}}</td>
+            <td>
+              <a [routerLink]="'/employee/' + emp.id + '/update'" class="btn btn-sm btn-success">Edit</a>
+              <button type="button" class="btn btn-sm btn-danger" (click)="deleteEmployee(emp.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
